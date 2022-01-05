@@ -8,6 +8,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
@@ -26,10 +28,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Mymessage.findAll", query = "SELECT m FROM Mymessage m"),
     @NamedQuery(name = "Mymessage.findByIdMessage", query = "SELECT m FROM Mymessage m WHERE m.idMessage = :idMessage"),
     @NamedQuery(name = "Mymessage.findBySendTo", query = "SELECT m FROM Mymessage m WHERE m.sendTo = :sendTo")})
-public class Mymessage implements Serializable {
+public class Mymessage implements Serializable{
 
-    private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue
     @Basic(optional = false)
     @Column(name = "id_message")
     private Integer idMessage;
@@ -40,7 +42,17 @@ public class Mymessage implements Serializable {
     private String sendTo;
 
     public Mymessage() {
+        super();
     }
+
+    public Mymessage(Integer idMessage, String message, String sendTo) {
+        super();
+        this.idMessage = idMessage;
+        this.message = message;
+        this.sendTo = sendTo;
+    }
+    
+    
 
     public Mymessage(Integer idMessage) {
         this.idMessage = idMessage;

@@ -32,9 +32,9 @@ public class MymessageJpaController implements Serializable {
     }
 
     public MymessageJpaController() {
+        
     }
     
-
     public void create(Mymessage mymessage) throws PreexistingEntityException, Exception {
         EntityManager em = null;
         try {
